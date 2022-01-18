@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jan 2022 pada 10.23
+-- Waktu pembuatan: 18 Jan 2022 pada 16.55
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.4.20
 
@@ -281,28 +281,32 @@ INSERT INTO `jenislayanan` (`id`, `nama`, `created_date_time`, `updated_date_tim
 CREATE TABLE `keputusan` (
   `idkeputusan` int(11) NOT NULL,
   `nama` text NOT NULL,
-  `berkas` text NOT NULL
+  `berkas` text NOT NULL,
+  `tahun` int(4) NOT NULL,
+  `created_date_time` datetime DEFAULT NULL,
+  `updated_date_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `keputusan`
 --
 
-INSERT INTO `keputusan` (`idkeputusan`, `nama`, `berkas`) VALUES
-(9, 'SOP Izin Usaha Perdagangan Pusat Perbelanjaan', 'SOP_Izin_Usaha_Perdagangan_Pusat_Perbelanjaan.pdf'),
-(10, 'SOP Izin Usaha Perdagangan - Toko Swalayan', 'SOP_Izin_Usaha_Perdagangan_-_Toko_Swalayan.pdf'),
-(11, 'SOP Izin Usaha Perdagangan - Surat Tanda Pendaftaran Waralaba', 'SOP_Izin_Usaha_Perdagangan_-_Surat_Tanda_Pendaftaran_Waralaba.pdf'),
-(12, 'Pelayanan Tanda Daftar Gudang', 'Pelayanan_Tanda_Daftar_Gudang.pdf'),
-(13, 'SOP Izin Operasional Komersial Tanda Daftar Gudang', 'SOP_Izin_Operasional_Komersial_Tanda_Daftar_Gudang.pdf'),
-(14, 'SOP Izin Operasional - Surat Keterangan Perdagangang Minuman Beralkohol', 'SOP_Izin_Operasional_-_Surat_Keterangan_Perdagangang_Minuman_Beralkohol.pdf'),
-(15, 'Pemberian Rekomendasi Izin STPW Waralaba', 'Pemberian_Rekomendasi_Izin_STPW_Waralaba.pdf'),
-(16, 'Pemberian Rekomendasi Izin SIUP Minuman Beralkohol', 'Pemberian_Rekomendasi_Izin_SIUP_Minuman_Beralkohol.pdf'),
-(17, 'Pemberian Rekomendasi Izin IUP2T,IUTM dan IUPP Pasar', 'Pemberian_Rekomendasi_Izin_IUP2T,IUTM_dan_IUPP_Pasar.pdf'),
-(18, 'Pemeberian Surat Rekomendasi Pedagang Kayu Antar Pulau Terdaftar (PKAPT)', 'Pemeberian_Surat_Rekomendasi_Pedagang_Kayu_Antar_Pulau_Terdaftar_(PKAPT).pdf'),
-(19, 'Pelayanan Pembelian Form Surat Keterangan Asal', 'Pelayanan_Pembelian_Form_Surat_Keterangan_Asal.pdf'),
-(20, 'SOP Pemugutan Retribusi Pelayanan Pasar', 'SOP_Pemugutan_Retribusi_Pelayanan_Pasar.pdf'),
-(21, 'Pelayanan Registrasi Sistem Surat Keterangan Asal', 'Pelayanan_Registrasi_Sistem_Surat_Keterangan_Asal.pdf'),
-(22, 'SOP Pelayanan Penerbitan SKA', 'SOP_Pelayanan_Penerbitan_SKA.pdf');
+INSERT INTO `keputusan` (`idkeputusan`, `nama`, `berkas`, `tahun`, `created_date_time`, `updated_date_time`) VALUES
+(9, 'SOP Izin Usaha Perdagangan Pusat Perbelanjaan', 'SOP_Izin_Usaha_Perdagangan_Pusat_Perbelanjaan.pdf', 2021, NULL, NULL),
+(10, 'SOP Izin Usaha Perdagangan - Toko Swalayan', 'SOP_Izin_Usaha_Perdagangan_-_Toko_Swalayan.pdf', 2021, NULL, NULL),
+(11, 'SOP Izin Usaha Perdagangan - Surat Tanda Pendaftaran Waralaba', 'SOP_Izin_Usaha_Perdagangan_-_Surat_Tanda_Pendaftaran_Waralaba.pdf', 2021, NULL, NULL),
+(12, 'Pelayanan Tanda Daftar Gudang', 'Pelayanan_Tanda_Daftar_Gudang.pdf', 2021, NULL, NULL),
+(13, 'SOP Izin Operasional Komersial Tanda Daftar Gudang', 'SOP_Izin_Operasional_Komersial_Tanda_Daftar_Gudang.pdf', 2021, NULL, NULL),
+(14, 'SOP Izin Operasional - Surat Keterangan Perdagangang Minuman Beralkohol', 'SOP_Izin_Operasional_-_Surat_Keterangan_Perdagangang_Minuman_Beralkohol.pdf', 2021, NULL, NULL),
+(15, 'Pemberian Rekomendasi Izin STPW Waralaba', 'Pemberian_Rekomendasi_Izin_STPW_Waralaba.pdf', 2021, NULL, NULL),
+(16, 'Pemberian Rekomendasi Izin SIUP Minuman Beralkohol', 'Pemberian_Rekomendasi_Izin_SIUP_Minuman_Beralkohol.pdf', 2021, NULL, NULL),
+(17, 'Pemberian Rekomendasi Izin IUP2T,IUTM dan IUPP Pasar', 'Pemberian_Rekomendasi_Izin_IUP2T,IUTM_dan_IUPP_Pasar.pdf', 2021, NULL, NULL),
+(18, 'Pemeberian Surat Rekomendasi Pedagang Kayu Antar Pulau Terdaftar (PKAPT)', 'Pemeberian_Surat_Rekomendasi_Pedagang_Kayu_Antar_Pulau_Terdaftar_(PKAPT).pdf', 2021, NULL, NULL),
+(19, 'Pelayanan Pembelian Form Surat Keterangan Asal', 'Pelayanan_Pembelian_Form_Surat_Keterangan_Asal.pdf', 2021, NULL, NULL),
+(20, 'SOP Pemugutan Retribusi Pelayanan Pasar', 'SOP_Pemugutan_Retribusi_Pelayanan_Pasar.pdf', 2021, NULL, NULL),
+(21, 'Pelayanan Registrasi Sistem Surat Keterangan Asal', 'Pelayanan_Registrasi_Sistem_Surat_Keterangan_Asal.pdf', 2021, NULL, NULL),
+(22, 'SOP Pelayanan Penerbitan SKA', 'SOP_Pelayanan_Penerbitan_SKA.pdf', 2021, NULL, NULL),
+(23, 'Testing', 'Contoh.pdf', 2021, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -319,21 +323,25 @@ CREATE TABLE `pengaduan` (
   `email` text NOT NULL,
   `pekerjaan` text NOT NULL,
   `hal` text NOT NULL,
-  `status` enum('dibalas','pending','ditolak','') NOT NULL,
+  `status` enum('tulis','verifikasi','tindaklanjut','pending','selesai') NOT NULL,
+  `berkas` text DEFAULT NULL,
   `idadmin` int(11) NOT NULL,
-  `idjenis` int(11) NOT NULL
+  `idjenis` int(11) NOT NULL,
+  `created_date_time` date DEFAULT NULL,
+  `updated_date_time` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `pengaduan`
 --
 
-INSERT INTO `pengaduan` (`idpengaduan`, `NIK`, `nama`, `alamat`, `nomorhp`, `email`, `pekerjaan`, `hal`, `status`, `idadmin`, `idjenis`) VALUES
-(12, '7326032404040001', 'Natalia', 'Jl Teuku Umar, Nunukan', 2147483647, 'Natalia@gmail.com', 'Rumah Tangga', 'Kelangkaan sembako', 'pending', 4, 0),
-(14, '123', 'Theresyah', 'Cangkareng', 82, 'theresyah@gmail.com', 'Mahasiswa', 'Kelangkaan sembako', 'dibalas', 4, 0),
-(15, '123', 'testing', 'bekasi', 21, 'sasa@example.com', 'pengangguran', '-', '', 0, 3),
-(16, '123', 'tester', 'Bekasi', 123, '123@gg.com', 'Cang', '123', '', 4, 4),
-(17, '123', '123', '123', 123, '123@123.com', '123', '123', '', 4, 6);
+INSERT INTO `pengaduan` (`idpengaduan`, `NIK`, `nama`, `alamat`, `nomorhp`, `email`, `pekerjaan`, `hal`, `status`, `berkas`, `idadmin`, `idjenis`, `created_date_time`, `updated_date_time`) VALUES
+(12, '7326032404040001', 'Natalia', 'Jl Teuku Umar, Nunukan', 2147483647, 'Natalia@gmail.com', 'Rumah Tangga', 'Kelangkaan sembako', 'selesai', 'Contoh1.pdf', 4, 2, '2022-01-18', NULL),
+(14, '123', 'Theresyah', 'Cangkareng', 82, 'theresyah@gmail.com', 'Mahasiswa', 'Kelangkaan sembako', 'selesai', 'Abunawas_Menu_Book_Jakarta_2020.pdf', 4, 4, '2022-01-12', NULL),
+(15, '123', 'testing', 'bekasi', 21, 'sasa@example.com', 'pengangguran', '-', 'tulis', NULL, 0, 3, '2022-01-18', NULL),
+(16, '123', 'tester', 'Bekasi', 123, '123@gg.com', 'Cang', '123', 'selesai', 'Contoh.pdf', 4, 4, '2022-01-16', NULL),
+(17, '123', '123', '123', 123, '123@123.com', '123', '123', 'pending', NULL, 4, 6, '2022-01-15', NULL),
+(20, '1eqwfwq', '1dqw', 'qwf', 123, 'asfasf', 'asfasf', 'asf', '', NULL, 4, 2, '2022-01-18', NULL);
 
 -- --------------------------------------------------------
 
@@ -463,13 +471,13 @@ ALTER TABLE `jenislayanan`
 -- AUTO_INCREMENT untuk tabel `keputusan`
 --
 ALTER TABLE `keputusan`
-  MODIFY `idkeputusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idkeputusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  MODIFY `idpengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idpengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `report`
