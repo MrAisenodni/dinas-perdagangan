@@ -23,7 +23,11 @@ class Home extends CI_Controller
     }
     public function pengaduan()
     {
-        $this->load->view('pengaduan');
+        $data = [
+            'jenislayanan'  => $this->models->jenislayanan(),
+        ];
+
+        $this->load->view('pengaduan', $data);
     }
     public function keputusan()
     {

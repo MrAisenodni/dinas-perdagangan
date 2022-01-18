@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Jan 2022 pada 08.19
--- Versi server: 10.4.21-MariaDB
--- Versi PHP: 8.0.11
+-- Waktu pembuatan: 18 Jan 2022 pada 10.23
+-- Versi server: 10.4.19-MariaDB
+-- Versi PHP: 7.4.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,15 +30,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `idadmin` int(11) NOT NULL,
   `username` text NOT NULL,
-  `password` text NOT NULL
+  `password` text NOT NULL,
+  `akses` enum('user','admin','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `admin`
 --
 
-INSERT INTO `admin` (`idadmin`, `username`, `password`) VALUES
-(1, 'admin', 'admin');
+INSERT INTO `admin` (`idadmin`, `username`, `password`, `akses`) VALUES
+(1, 'admin', 'admin', 'admin'),
+(4, 'user', 'user', 'user'),
+(5, 'tes', 'tes', 'user'),
+(6, 'tes', 'tes', 'user'),
+(7, 'lyla', 'lali', 'user'),
+(8, 'user123', 'user', 'user');
 
 -- --------------------------------------------------------
 
@@ -243,6 +249,32 @@ INSERT INTO `galerivideo` (`idvideo`, `namakegiatan`, `tanggalkegiatan`, `video`
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `jenislayanan`
+--
+
+CREATE TABLE `jenislayanan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `created_date_time` datetime NOT NULL,
+  `updated_date_time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `jenislayanan`
+--
+
+INSERT INTO `jenislayanan` (`id`, `nama`, `created_date_time`, `updated_date_time`) VALUES
+(1, 'PENERBITAN SKA', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
+(2, 'PENERBITAN TDG/SKPB', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
+(3, 'PENERBITAN WARALABA/STPW', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
+(4, 'REKOMENDASI IZIN SIUP MINUMAN BERALKOHOL', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
+(5, 'REKOMENDASI PKAPT', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
+(6, 'REKOMENDASI IZIN PENGELOLAAN PASAR', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
+(7, 'PELAYANAN TERA ATAU TERA ULANG', '2022-01-18 09:59:55', '2022-01-18 09:59:55');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `keputusan`
 --
 
@@ -287,16 +319,21 @@ CREATE TABLE `pengaduan` (
   `email` text NOT NULL,
   `pekerjaan` text NOT NULL,
   `hal` text NOT NULL,
-  `status` text NOT NULL
+  `status` enum('dibalas','pending','ditolak','') NOT NULL,
+  `idadmin` int(11) NOT NULL,
+  `idjenis` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `pengaduan`
 --
 
-INSERT INTO `pengaduan` (`idpengaduan`, `NIK`, `nama`, `alamat`, `nomorhp`, `email`, `pekerjaan`, `hal`, `status`) VALUES
-(12, '7326032404040001', 'Natalia', 'Jl Teuku Umar, Nunukan', 2147483647, 'Natalia@gmail.com', 'Rumah Tangga', 'Kelangkaan sembako', 'Beri Tanggapan'),
-(14, '123', 'Theresyah', 'Cangkareng', 82, 'theresyah@gmail.com', 'Mahasiswa', 'Kelangkaan sembako', 'Beri Tanggapan');
+INSERT INTO `pengaduan` (`idpengaduan`, `NIK`, `nama`, `alamat`, `nomorhp`, `email`, `pekerjaan`, `hal`, `status`, `idadmin`, `idjenis`) VALUES
+(12, '7326032404040001', 'Natalia', 'Jl Teuku Umar, Nunukan', 2147483647, 'Natalia@gmail.com', 'Rumah Tangga', 'Kelangkaan sembako', 'pending', 4, 0),
+(14, '123', 'Theresyah', 'Cangkareng', 82, 'theresyah@gmail.com', 'Mahasiswa', 'Kelangkaan sembako', 'dibalas', 4, 0),
+(15, '123', 'testing', 'bekasi', 21, 'sasa@example.com', 'pengangguran', '-', '', 0, 3),
+(16, '123', 'tester', 'Bekasi', 123, '123@gg.com', 'Cang', '123', '', 4, 4),
+(17, '123', '123', '123', 123, '123@123.com', '123', '123', '', 4, 6);
 
 -- --------------------------------------------------------
 
@@ -359,6 +396,12 @@ ALTER TABLE `galerivideo`
   ADD PRIMARY KEY (`idvideo`);
 
 --
+-- Indeks untuk tabel `jenislayanan`
+--
+ALTER TABLE `jenislayanan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `keputusan`
 --
 ALTER TABLE `keputusan`
@@ -384,7 +427,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `idadmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idadmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `bahanpokok`
@@ -411,6 +454,12 @@ ALTER TABLE `galerivideo`
   MODIFY `idvideo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT untuk tabel `jenislayanan`
+--
+ALTER TABLE `jenislayanan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT untuk tabel `keputusan`
 --
 ALTER TABLE `keputusan`
@@ -420,7 +469,7 @@ ALTER TABLE `keputusan`
 -- AUTO_INCREMENT untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  MODIFY `idpengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idpengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `report`

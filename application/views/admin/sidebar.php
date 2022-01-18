@@ -28,6 +28,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="<?php echo base_url('laporan/cetakpengaduan') ?>"><i class="fa fa-file"></i>Pengaduan</a></li>
+                    <li><a href="<?php echo base_url('laporan/laporanpengaduan') ?>"><i class="fa fa-file"></i>Laporan Pengaduan</a></li>
                     <li><a href="<?php echo base_url('laporan/cetakbahanpokok') ?>"><i class="fa fa-file"></i>Daftar Bahan Pokok</a></li>
                 </ul>
             </li>

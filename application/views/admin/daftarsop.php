@@ -15,6 +15,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama SOP</th>
+                            <th>Tahun</th>
                             <th>Berkas</th>
                             <th>Aksi</th>
                         </tr>
@@ -29,7 +30,8 @@
                                 // $result3  = substr($p->nama, 0, 20); //dari kalimat depan 20 huruf ke belakang
                                 // echo '<td>' . $result3  .   '</td>';
                                 echo '<td>' . $p->nama . '</td>';
-                                echo '<td><source src="' . base_url('upload/' . $p->berkas) . '"  width="150px">  </td>';
+                                echo '<td>' . $p->tahun . '</td>';
+                                // echo '<td><source src="' . base_url('upload/' . $p->berkas) . '"  width="150px">  </td>';
                         ?>
                                 <?php if (!empty($p->berkas)) {
                                     $tipe = pathinfo(base_url('upload/' . $p->berkas), PATHINFO_EXTENSION);

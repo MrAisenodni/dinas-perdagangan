@@ -26,8 +26,7 @@ $this->load->view('header');
             <span>Silahkan melakukan pengaduan, Jika sudah Cek status pengaduan Klik &nbsp
                 <a class="btn btn-info" href="<?php echo base_url('layanan/statuspengaduan') ?>">Di sini</a>
             </span><br><br><br>
-            <!-- <?php echo $this->session->flashdata('msg'); ?>
-            <form data-parsley-validate action="<?php echo base_url('login/aksi_login') ?>" method="post"> -->
+            <?php echo $this->session->flashdata('msg'); ?>
             <form class="" action="<?php echo base_url('layanan/simpanpengaduan') ?>" method="post" autocomplete="off">
                 <div class="mb-3">
                     <label for="exampleInputNama" class="form-label">NIK</label>
@@ -59,6 +58,16 @@ $this->load->view('header');
                     <input class="form-control" type="text" name="pekerjaan" value="<?php echo (!empty($pengaduan[0]->pekerjaan)) ? $pengaduan[0]->pekerjaan : '' ?>" required><br>
                 </div><br>
 
+                <div class="mb-3">
+                    <label>Jenis Layanan</label>
+                    <select name="jenislayanan" id="jenislayanan" class="form-control" required>
+                        <option value="" hidden>--- PILIH JENIS LAYANAN ---</option>
+                        <?php foreach ($jenislayanan as $key => $p) { ?>
+                            <option value="<?php echo $p->id ?>"><?php echo $p->nama ?></option>
+                        <?php } ?>
+                    </select>
+                </div><br>
+                
                 <div class="mb-3">
                     <label>Hal yang diadukan</label>
                     <textarea class="form-control" type="text" name="hal" value="<?php echo (!empty($pengaduan[0]->hal)) ? $pengaduan[0]->hal : '' ?>" required rows="5"></textarea><br>

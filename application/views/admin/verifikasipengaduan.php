@@ -12,17 +12,21 @@
                             <label for="exampleFormControlSelect1">Status</label>
                             <input class="form-control" type="hidden" name="idpengaduan" value="<?php echo (!empty($pengaduan[0]->idpengaduan)) ? $pengaduan[0]->idpengaduan : '' ?>" required><br>
                             <select class="form-control" name="status" id="exampleFormControlSelect1">
-                                <option value="Tulis Laporan">Tulis Laporan</option>
-                                <option value="Proses Verifikasi">Proses Verifikasi</option>
-                                <option value="Proses Tindak Lanjut">Proses Tindak Lanjut</option>
-                                <option value="Beri Tanggapan">Beri Tanggapan</option>
-                                <option value="Selesai">Selesai</option>
+                                <option value="tulis">Tulis Laporan</option>
+                                <option value="verifikasi">Proses Verifikasi</option>
+                                <option value="tindaklanjut">Proses Tindak Lanjut</option>
+                                <option value="pending">Beri Tanggapan</option>
+                                <option value="selesai">Selesai</option>
                             </select>
                             <br>
                             <div class="form-group">
+                                <label>Berkas</label>
+                                <input type="file" name="berkas" required><br>
+                            </div><br>
+                            <div class="form-group">
                                 <label></label>
                                 <button class="btn btn-info" type="submit">Simpan</button>
-                                <a class="btn btn-default" href="<?php echo base_url('daftarpengaduan') ?>">Kembali</a>
+                                <a class="btn btn-default" href="<?php echo base_url('layanan/daftarpengaduan') ?>">Kembali</a>
                             </div>
                         </div>
                     </div>

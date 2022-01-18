@@ -80,7 +80,7 @@ foreach ($report as $result) {
             },
             yAxis: {
                 title: {
-                    text: 'Jumlah'
+                    text: 'Harga Pokok'
                 },
             },
             tooltip: {

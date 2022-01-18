@@ -13,6 +13,10 @@
                             <input class="form-control" type="text" name="nama" value="<?php echo (!empty($keputusan[0]->nama)) ? $keputusan[0]->nama : '' ?>" required><br>
                         </div>
                         <div class="form-group">
+                            <label>Tahun SOP</label>
+                            <input class="form-control" type="text" name="tahun" value="<?php echo (!empty($keputusan[0]->tahun)) ? $keputusan[0]->tahun : '' ?>" required><br>
+                        </div>
+                        <div class="form-group">
                             <label></label>
                             <button class="btn btn-info" type="submit">Simpan</button>
                             <a class="btn btn-default" href="<?php echo base_url('layanan/daftarsop') ?>">Kembali</a>
@@ -23,7 +27,7 @@
                             <label>Berkas</label>
                             <input type="file" name="berkas" accept="image/*" required><br>
                             <?php if (!empty($keputusan[0]->berkas)) : ?>
-                                <img src="<?php echo base_url('upload/' . $keputusan[0]->gambar); ?>" width="100" alt="">
+                                <img src="<?php echo base_url('upload/' . $keputusan[0]->berkas); ?>" width="100" alt="">
                             <?php endif; ?>
                         </div><br>
 

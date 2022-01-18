@@ -23,6 +23,7 @@ class Layanan extends CI_Controller
     }
     public function simpanpengaduan()
     {
+        date_default_timezone_set("Asia/Jakarta");
         // $idpengaduan = $this->input->post('idpengaduan');
         $NIK = $this->input->post('NIK');
         $nama = $this->input->post('nama');
@@ -31,6 +32,7 @@ class Layanan extends CI_Controller
         $email = $this->input->post('email');
         $pekerjaan = $this->input->post('pekerjaan');
         $hal = $this->input->post('hal');
+        $jenislayanan = $this->input->post('jenislayanan');
         $status = "Belum di proses";
 
         $data_simpan = array(
@@ -41,13 +43,14 @@ class Layanan extends CI_Controller
             'email' => $email,
             'pekerjaan' => $pekerjaan,
             'hal' => $hal,
+            'idadmin' => $this->session->userdata('idadmin'),
+            'idjenis' => $jenislayanan,
             'status' => $status,
-
+            'created_date_time' => date('Y-m-d h:i:s a', time()),
         );
         $simpan = $this->models->insert($data_simpan, 'pengaduan'); //namatable
-        if ($simpan) {
-            redirect('home/pengaduan');
-        }
+        $this->session->set_flashdata('msg', '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>Pengajuan berhasil dikirim.</div>'); 
+        redirect('home/pengaduan');
     }
     // public function tambahpengaduan()
     // {
@@ -70,9 +73,15 @@ class Layanan extends CI_Controller
         }
     }
 
+    // Commended by Fiqri 18/01/2022
+    // public function statuspengaduan()
+    // {
+    //     $data['pengaduan'] = $this->models->pengaduan(array(), 'pengaduan');
+    //     $this->load->view('statuspengaduan', $data);
+    // }
     public function statuspengaduan()
     {
-        $data['pengaduan'] = $this->models->pengaduan(array(), 'pengaduan');
+        $data['pengaduan'] = $this->models->pengaduan(array('idadmin' => $this->session->userdata('idadmin')), 'pengaduan');
         $this->load->view('statuspengaduan', $data);
     }
     public function verifikasi($id)
@@ -86,13 +95,33 @@ class Layanan extends CI_Controller
         $idpengaduan = $this->input->post('idpengaduan');
         $status = $this->input->post('status');
 
-        $data_update = array(
-            'status' => $status,
-        );
+        $config['upload_path']          = getcwd() . '/upload/';
+        $config['allowed_types']        = 'pdf|doc|docx';
+        // $config['max_size']             = 1024;
+        // $config['max_width']            = 1024;
+        // $config['max_height']           = 768;
+        // $config['encrypt_name']         = true;
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('berkas')) {
+            $data_update = array(
+                'status' => $status,
 
-        $simpan = $this->models->update(array('idpengaduan' => $idpengaduan), $data_update, 'pengaduan');
-        if ($simpan) {
-            redirect('layanan/daftarpengaduan');
+            );
+            $simpan = $this->models->update(array('idpengaduan' => $idpengaduan), $data_update, 'pengaduan');
+            if ($simpan) {
+                redirect('layanan/daftarpengaduan');
+            }
+        } else {
+            $data = array('upload_data' => $this->upload->data());
+            $filename = $data['upload_data']['file_name'];
+            $data_update = array(
+                'status' => $status,
+                'berkas'      => $filename,
+            );
+            $simpan = $this->models->update(array('idpengaduan' => $idpengaduan), $data_update, 'pengaduan');
+            if ($simpan) {
+                redirect('layanan/daftarpengaduan');
+            }
         }
     }
 
@@ -106,6 +135,7 @@ class Layanan extends CI_Controller
     public function simpansop()
     {
         $nama = $this->input->post('nama');
+        $tahun = $this->input->post('tahun');
         $config['upload_path']          = getcwd() . '/upload/'; //letaklokasiyangakandisisimpan
         $config['allowed_types']        = 'pdf|doc|docx';
         // $config['max_size']             = 5024;
@@ -121,6 +151,7 @@ class Layanan extends CI_Controller
             $filename = $data['upload_data']['file_name']; //deklarasinamafile
             $data_simpan = array(
                 'nama' => $nama,
+                'tahun' => $tahun,
                 'berkas'      => $filename,
             );
             $simpan = $this->models->insert($data_simpan, 'keputusan'); //namatable

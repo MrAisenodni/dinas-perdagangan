@@ -25,17 +25,22 @@ $this->load->view('header');
             <h1>Login Administrator</h1>
             <?php echo $this->session->flashdata('msg'); ?>
             <form data-parsley-validate action="<?php echo base_url('login/aksi_login') ?>" method="post">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">We'll never share your text with anyone else.</div>
-                </div><br>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
-                </div><br>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Username</label>
+                        <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your text with anyone else.</div>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                    </div>
+                </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="row">
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <p>Belum punya akun?<a href="<?php echo base_url('login/registration') ?>" class="text-primary"> Daftar Sekarang</a></p>
+                </div>
             </form>
         </div>
     </div>

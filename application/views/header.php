@@ -71,7 +71,11 @@
                                             INFORMASI LAYANAN
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                            <a class="dropdown-item" href="<?php echo base_url('home/pengaduan') ?>">Pengaduan</a>
+                                            <a class="dropdown-item" href="<?php if ($this->session->userdata('akses') != null) { 
+                                                echo base_url('home/pengaduan'); 
+                                            } else { 
+                                                echo base_url('login/login'); 
+                                            } ?>">Pengaduan</a>
                                             <a class="dropdown-item" href="<?php echo base_url('home/keputusan') ?>">SOP & Keputusan</a>
                                             <a class="dropdown-item" href="<?php echo base_url('home/bahanpokok') ?>">Daftar Bahan Pokok</a>
                                         </div>
@@ -90,7 +94,11 @@
                                         <a class="nav-link" href="<?php echo base_url('home/tentangkami') ?>">TENTANG KAMI</a>
                                     </li>
                                     <li class=" nav-item">
-                                        <a class="nav-link" href="<?php echo base_url('login/login') ?>">LOGIN</a>
+                                        <?php if($this->session->userdata('akses') != null) { ?>
+                                            <a class="nav-link" href="<?php echo base_url('login/logout') ?>">LOGOUT</a>
+                                        <?php } else { ?>
+                                            <a class="nav-link" href="<?php echo base_url('login/login') ?>">LOGIN</a>
+                                        <?php } ?>
                                     </li>
                                 </ul>
                             </div>

@@ -38,7 +38,17 @@
                                 echo '<td>' . $p->email . '</td>';
                                 echo '<td>' . $p->pekerjaan . '</td>';
                                 echo '<td>' . $p->hal . '</td>';
-                                echo '<td>' . $p->status . '</td>';
+                                if($p->status == 'selesai') {
+                                    echo '<td><div class="btn btn-success">Selesai</div></td>';
+                                } elseif ($p->status == 'tulis') {
+                                    echo '<td><div class="btn btn-warning">Tulis Laporan</div></td>';
+                                } elseif ($p->status == 'verifikasi') {
+                                    echo '<td><div class="btn btn-info">Proses Verifikasi</div></td>';
+                                } elseif ($p->status == 'tindaklanjut') {
+                                    echo '<td><div class="btn btn-warning">Proses Tindak Lanjut</div></td>';
+                                } else {
+                                    echo '<td><div class="btn btn-danger">Beri Tanggapan</div></td>';
+                                }
                                 echo '<td><a href="' . base_url('layanan/verifikasi/' . $p->idpengaduan) . '"class="btn btn-info btn-xs">Verifikasi</a>
                     <a href="' . base_url('layanan/hapuspengaduan/' . $p->idpengaduan) . '" class="btn btn-danger btn-xs">Hapus</a>              
                     </td>';
