@@ -14,29 +14,35 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>NIK</th>
+                            <!-- <th>NIK</th> -->
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>Nomor Telp/Hp</th>
                             <th>Email</th>
                             <th>Pekerjaan</th>
+                            <th>Jenis Layanan</th>
                             <th>Hal yang diadukan</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($pengaduan)) :
+                        <?php 
+                        $this->load->model('models');
+                
+                        if (!empty($pengaduan)) :
                             foreach ($pengaduan as $key => $p) {
+                                $data = $this->models->getlayanan(array('id' => $p->idjenis), 'jenislayanan');
                                 $no = $key + 1;
                                 echo '<tr>';
                                 echo '<td>' . $no . '</td>';
-                                echo '<td>' . $p->NIK . '</td>';
+                                // echo '<td>' . $p->NIK . '</td>';
                                 echo '<td>' . $p->nama . '</td>';
                                 echo '<td>' . $p->alamat . '</td>';
                                 echo '<td>' . $p->nomorhp . '</td>';
                                 echo '<td>' . $p->email . '</td>';
                                 echo '<td>' . $p->pekerjaan . '</td>';
+                                echo '<td>' . $data[0]->nama . '</td>';
                                 echo '<td>' . $p->hal . '</td>';
                                 if($p->status == 'selesai') {
                                     echo '<td><div class="btn btn-success">Selesai</div></td>';

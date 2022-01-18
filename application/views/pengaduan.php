@@ -21,6 +21,7 @@ $this->load->view('header');
 
 <div class="container">
     <div class="row justify-content-md-center ">
+        <img src="<?php echo base_url('upload/infografis-01.png') ?>" alt="Infografis" width="50%">
         <div class="col-lg-6 col-sm-6"><br><br>
             <h1>Pengaduan Layanan</h1>
             <span>Silahkan melakukan pengaduan, Jika sudah Cek status pengaduan Klik &nbsp
@@ -28,10 +29,10 @@ $this->load->view('header');
             </span><br><br><br>
             <?php echo $this->session->flashdata('msg'); ?>
             <form class="" action="<?php echo base_url('layanan/simpanpengaduan') ?>" method="post" autocomplete="off">
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <label for="exampleInputNama" class="form-label">NIK</label>
                     <input class="form-control" type="text" name="NIK" value="<?php echo (!empty($pengaduan[0]->NIK)) ? $pengaduan[0]->NIK : '' ?>" required><br>
-                </div><br>
+                </div><br> -->
 
                 <div class="mb-3">
                     <label for="exampleInputNama" class="form-label">Nama</label>

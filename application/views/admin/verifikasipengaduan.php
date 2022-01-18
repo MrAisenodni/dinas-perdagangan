@@ -21,7 +21,7 @@
                             <br>
                             <div class="form-group">
                                 <label>Berkas</label>
-                                <input type="file" name="berkas" required><br>
+                                <input type="file" name="berkas"><br>
                             </div><br>
                             <div class="form-group">
                                 <label></label>

@@ -157,6 +157,12 @@ class Models extends CI_model
         $this->db->from('jenislayanan'); //select*from
         return $this->db->get()->result();
     }
+    public function getlayanan($where = array())
+    {
+        $this->db->from('jenislayanan'); //select*from
+        $this->db->where($where);
+        return $this->db->get()->result();
+    }
 
     public function keputusan($where = array())
     {

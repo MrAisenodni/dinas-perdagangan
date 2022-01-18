@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jan 2022 pada 16.55
+-- Waktu pembuatan: 18 Jan 2022 pada 18.01
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.4.20
 
@@ -316,7 +316,7 @@ INSERT INTO `keputusan` (`idkeputusan`, `nama`, `berkas`, `tahun`, `created_date
 
 CREATE TABLE `pengaduan` (
   `idpengaduan` int(11) NOT NULL,
-  `NIK` text NOT NULL,
+  `NIK` text DEFAULT NULL,
   `nama` text NOT NULL,
   `alamat` text NOT NULL,
   `nomorhp` int(15) NOT NULL,

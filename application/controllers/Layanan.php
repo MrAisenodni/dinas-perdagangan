@@ -25,7 +25,7 @@ class Layanan extends CI_Controller
     {
         date_default_timezone_set("Asia/Jakarta");
         // $idpengaduan = $this->input->post('idpengaduan');
-        $NIK = $this->input->post('NIK');
+        // $NIK = $this->input->post('NIK');
         $nama = $this->input->post('nama');
         $alamat = $this->input->post('alamat');
         $nomorhp = $this->input->post('nomorhp');

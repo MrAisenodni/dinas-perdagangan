@@ -25,6 +25,7 @@ $this->load->view('header');
                 <tr>
                     <th>No</th>
                     <th>Nama SOP</th>
+                    <th>Tahun</th>
                     <th>Berkas</th>
                     <th>Download</th>
                 </tr>
@@ -36,6 +37,7 @@ $this->load->view('header');
                         echo '<tr>';
                         echo '<td>' . $no . '</td>';
                         echo '<td>' . $p->nama . '</td>';
+                        echo '<td>' . $p->tahun . '</td>';
 
                 ?>
                         <?php if (!empty($p->berkas)) {
