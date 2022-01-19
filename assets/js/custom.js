@@ -104,6 +104,35 @@
     }
   });
 
+  // image popup
+	var imaggepoppup = $('.image-popup');
+	if(imaggepoppup.length){
+		$('.image-popup').magnificPopup({
+			type: 'image',
+			callbacks: {
+				beforeOpen: function() {
+				   this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure animated zoomInDown');
+				}
+			},
+			gallery: {
+				enabled: true
+			}
+		});
+	}
+    
+	// video popup
+	var popupyoutube = $('.popup-youtube');
+	if(popupyoutube.length){
+		$('.popup-youtube').magnificPopup({
+			disableOn: 700,
+			type: 'iframe',
+			mainClass: 'mfp-fade',
+			removalDelay: 160,
+			preloader: false,
+			fixedContentPos: false								
+		});	
+	}
+
 
  //------- Mailchimp js --------//  
 function mailChimp() {

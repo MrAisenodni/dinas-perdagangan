@@ -54,14 +54,20 @@ $this->load->view('header');
                     ?>
 
                             <li>
-                                <!-- <a href="<?php echo base_url('upload/' . $p->foto) ?>" data-toggle="lightbox" data-gallery="gallery">
-                                    <img src="<?php echo base_url('upload/' . $p->foto) ?>" class="imggallery">
-                                </a> -->
+                                <!-- <div class="gallery-item">
+                                    <img style="max-width: 100%; height: 250px" src="<?php echo base_url('upload/' . $p->foto) ?>" alt="-" />
+                                    <div class="gallery-desc">
+                                        <a class="image-popup" href="<?php echo base_url('upload/' . $p->foto) ?>" title="-">
+                                            <span class="overlay"><i class="fa fa-search" aria-hidden="true"></i></span>
+                                        </a>
+                                    </div>
+                                </div> -->
 
                                 <a href="<?php echo base_url('upload/' . $p->foto) ?>" data-toggle="lightbox" data-gallery="gallery" data-max-width="600">
-                                    <img onclick="enlargeImg()" id="img<?php echo $p->idfoto ?>" src="<?php echo  base_url('upload/' . $p->foto) ?>" width="400" height="250" alt="">
+                                    <img id="img<?php echo $p->idfoto ?>" src="<?php echo  base_url('upload/' . $p->foto) ?>" width="400" height="250" alt="">
                                     <span class="overlay"><i class="fa fa-search" aria-hidden="true"></i></span>
                                 </a>
+                                <a class="image-popup" href="<?php echo base_url('upload/' . $p->foto) ?>" title="-">
                             </li>
                     <?php }
 

@@ -13,7 +13,7 @@
             <h4>Laporan Pengaduan</h4>
         </center>
         <center>
-            <h5><?php echo $this->models->format_tanggal($_GET['tgl1']) . ' - ' . $this->models->format_tanggal($_GET['tgl2']); ?></h5>
+            <!-- <h5><?php echo $this->models->format_tanggal($_GET['tgl1']) . ' - ' . $this->models->format_tanggal($_GET['tgl2']); ?></h5> -->
         </center>
         <br>
         <table id="example1" class="table table-bordered table-hover">

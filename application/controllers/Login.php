@@ -60,7 +60,7 @@ class Login extends CI_Controller
             if($user[0]->akses == 'admin') {
                 redirect('dashboard');
             } else {
-                redirect('home');
+                redirect('home/pengaduan');
             }
         } else {
             $this->session->set_flashdata('msg', '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>Email Atau Password Anda Salah Silahkan Diulangi Lagi</div>');

@@ -17,11 +17,12 @@ class Laporan extends CI_Controller
 
     public function cetakpengaduan()
     {
-        $tgl_mulai = (!empty($this->input->get('tgl1'))) ? $this->input->get('tgl1') : null;
-        $tgl_selesai = (!empty($this->input->get('tgl2'))) ? $this->input->get('tgl2') : null;
+        // $tgl_mulai = (!empty($this->input->get('tgl1'))) ? $this->input->get('tgl1') : null;
+        // $tgl_selesai = (!empty($this->input->get('tgl2'))) ? $this->input->get('tgl2') : null;
         $jenis = (!empty($this->input->get('jenis'))) ? $this->input->get('jenis') : null;
         $data=[
-            'pengaduan' => $this->models->get_laporan_pengaduan($tgl_mulai, $tgl_selesai, $jenis),
+            // 'pengaduan' => $this->models->get_laporan_pengaduan($tgl_mulai, $tgl_selesai, $jenis),
+            'pengaduan' => $this->models->get_laporan_pengaduan($jenis),
             'jenis' => $this->models->jenislayanan()
         ];
 
@@ -73,10 +74,11 @@ class Laporan extends CI_Controller
     }
     public function cetaklaporanpengaduan()
     {
-        $tgl_mulai = (!empty($this->input->get('tgl1'))) ? $this->input->get('tgl1') : null;
-        $tgl_selesai = (!empty($this->input->get('tgl2'))) ? $this->input->get('tgl2') : null;
+        // $tgl_mulai = (!empty($this->input->get('tgl1'))) ? $this->input->get('tgl1') : null;
+        // $tgl_selesai = (!empty($this->input->get('tgl2'))) ? $this->input->get('tgl2') : null;
         $jenis = (!empty($this->input->get('jenis'))) ? $this->input->get('jenis') : null;
-        $data['pengaduan'] = $this->models->get_laporan_pengaduan($tgl_mulai, $tgl_selesai, $jenis);
+        // $data['pengaduan'] = $this->models->get_laporan_pengaduan($tgl_mulai, $tgl_selesai, $jenis);
+        $data['pengaduan'] = $this->models->get_laporan_pengaduan($jenis);
         $this->load->view('admin/cetaklaporanpengaduan', $data);
     }
 }

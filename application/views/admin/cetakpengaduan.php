@@ -8,7 +8,7 @@
             </div>
             <div class="box-body">
             <form class="" action="" method="GET">
-                    <div class="col-sm-3">
+                    <!-- <div class="col-sm-3">
                         <div class="form-group">
                             <label>Tanggal</label>
                             <input type="date" name="tgl1" class="form-control" required>
@@ -19,8 +19,8 @@
                             <label>Sampai</label>
                             <input type="date" name="tgl2" class="form-control" required>
                         </div>
-                    </div>
-                    <div class="col-sm-3">
+                    </div> -->
+                    <div class="col-sm-8">
                         <div class="form-group">
                             <label>Jenis Layanan</label>
                             <select name="jenis" id="jenis" class="form-control" required>
@@ -31,17 +31,18 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <div class="form-group">
                             <label>Aksi</label>
                             <button type="submit" class="btn btn-info form-control"> Cari</button>
                         </div>
                     </div>
-                    <?php if (isset($_GET['tgl1'])) : ?>
+                    <?php if (isset($_GET['jenis'])) : ?>
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Cetak</label>
-                                <a href="<?php echo base_url('laporan/cetaklaporanpengaduan?tgl1=' . $_GET['tgl1'] . '&tgl2=' . $_GET['tgl2'] . '&jenis=' .$_GET['jenis']) ?>" target="_blank" class="btn btn-info form-control"> Cetak</a>
+                                <!-- <a href="<?php echo base_url('laporan/cetaklaporanpengaduan?tgl1=' . $_GET['tgl1'] . '&tgl2=' . $_GET['tgl2'] . '&jenis=' .$_GET['jenis']) ?>" target="_blank" class="btn btn-info form-control"> Cetak</a> -->
+                                <a href="<?php echo base_url('laporan/cetaklaporanpengaduan?jenis=' .$_GET['jenis']) ?>" target="_blank" class="btn btn-info form-control"> Cetak</a>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -80,7 +81,17 @@
                                 echo '<td>' . $p->pekerjaan . '</td>';
                                 echo '<td>' . $data[0]->nama . '</td>';
                                 echo '<td>' . $p->hal . '</td>';
-                                echo '<td>' . $p->status . '</td>';
+                                if($p->status == 'selesai') {
+                                    echo '<td><div class="btn btn-success">Selesai</div></td>';
+                                } elseif ($p->status == 'tulis') {
+                                    echo '<td><div class="btn btn-warning">Tulis Laporan</div></td>';
+                                } elseif ($p->status == 'verifikasi') {
+                                    echo '<td><div class="btn btn-info">Proses Verifikasi</div></td>';
+                                } elseif ($p->status == 'tindaklanjut') {
+                                    echo '<td><div class="btn btn-warning">Proses Tindak Lanjut</div></td>';
+                                } else {
+                                    echo '<td><div class="btn btn-danger">Beri Tanggapan</div></td>';
+                                }
                                 echo '<td><a href="' . base_url('laporan/cetak/' . $p->idpengaduan) . '"class="btn btn-danger btn-xs">Cetak</a> 
              
                     </td>';

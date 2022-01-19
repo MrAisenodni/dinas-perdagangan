@@ -33,7 +33,7 @@ class Layanan extends CI_Controller
         $pekerjaan = $this->input->post('pekerjaan');
         $hal = $this->input->post('hal');
         $jenislayanan = $this->input->post('jenislayanan');
-        $status = "Belum di proses";
+        $status = "pending";
 
         $data_simpan = array(
             'NIK' => $NIK,

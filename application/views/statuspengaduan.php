@@ -71,13 +71,13 @@ $this->load->view('header');
                         if($p->status == 'selesai') {
                             echo '<td><div class="btn btn-success">Selesai</div></td>';
                         } elseif ($p->status == 'tulis') {
-                            echo '<td><div class="btn btn-warning">Pelaporan</div></td>';
+                            echo '<td><div class="btn btn-warning">Tulis Laporan</div></td>';
                         } elseif ($p->status == 'verifikasi') {
-                            echo '<td><div class="btn btn-info">Verifikasi</div></td>';
+                            echo '<td><div class="btn btn-info">Proses Verifikasi</div></td>';
                         } elseif ($p->status == 'tindaklanjut') {
-                            echo '<td><div class="btn btn-warning">Tindak Lanjut</div></td>';
+                            echo '<td><div class="btn btn-warning">Proses Tindak Lanjut</div></td>';
                         } else {
-                            echo '<td><div class="btn btn-danger">Tertunda</div></td>';
+                            echo '<td><div class="btn btn-danger">Beri Tanggapan</div></td>';
                         } ?>
                 <?php
                         if (!empty($p->berkas)) {

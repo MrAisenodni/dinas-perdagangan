@@ -57,12 +57,18 @@ class Models extends CI_model
         $this->db->where('DATE(bahanpokok.tanggalbahan) BETWEEN "' . $tgl1 . '" AND "' . $tgl2 . '"');
         return $this->db->get()->result();
     }
-    public function get_laporan_pengaduan($tgl1, $tgl2, $jenis)
+    public function get_laporan_pengaduan($jenis)
     {
         $this->db->from('pengaduan');
-        $this->db->where('DATE(pengaduan.created_date_time) BETWEEN "' . $tgl1 . '" AND "' . $tgl2 . '"AND pengaduan.idjenis = "'.$jenis.'"');
+        $this->db->where('pengaduan.idjenis = "'.$jenis.'"');
         return $this->db->get()->result();
     }
+    // public function get_laporan_pengaduan($tgl1, $tgl2, $jenis)
+    // {
+    //     $this->db->from('pengaduan');
+    //     $this->db->where('DATE(pengaduan.created_date_time) BETWEEN "' . $tgl1 . '" AND "' . $tgl2 . '"AND pengaduan.idjenis = "'.$jenis.'"');
+    //     return $this->db->get()->result();
+    // }
 
 
     public function cariadmin($where = array())
