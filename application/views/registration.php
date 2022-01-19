@@ -26,6 +26,10 @@ $this->load->view('header');
             <?php echo $this->session->flashdata('msg'); ?>
             <form data-parsley-validate action="<?php echo base_url('login/tambahuser') ?>" method="post">
                 <div class="mb-3">
+                    <label for="nama" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" name="nama" id="nama" aria-describedby="emailHelp">
+                </div><br>
+                <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp">
                 </div><br>

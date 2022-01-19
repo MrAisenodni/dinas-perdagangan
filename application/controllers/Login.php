@@ -26,10 +26,12 @@ class Login extends CI_Controller
     public function tambahuser()
     {
 
+        $nama = $this->input->post('nama');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
         $data_simpan = array(
+            'nama' => $nama,
             'username' => $username,
             'password' => $password,
             'akses' => 'user',
@@ -52,6 +54,7 @@ class Login extends CI_Controller
         );
         if (!empty($user)) {
             $this->session->set_userdata('idadmin', $user[0]->idadmin);
+            $this->session->set_userdata('nama', $user[0]->nama);
             $this->session->set_userdata('username', $user[0]->username);
             $this->session->set_userdata('password', $user[0]->password);
             $this->session->set_userdata('akses', $user[0]->akses);
@@ -73,6 +76,7 @@ class Login extends CI_Controller
     public function logout()
     {
         $this->session->unset_userdata('idadmin');
+        $this->session->unset_userdata('nama');
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('akses');
         $this->session->unset_userdata('is_login');

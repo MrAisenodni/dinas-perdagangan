@@ -47,6 +47,7 @@ $this->load->view('header');
                     <th>Hal yang diadukan</th>
                     <th>Status</th>
                     <th>Download</th>
+                    <th>Balas Pengaduan</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,12 +57,18 @@ $this->load->view('header');
                 if (!empty($pengaduan)) :
                     foreach ($pengaduan as $key => $p) {
                         $data = $this->models->getlayanan(array('id' => $p->idjenis), 'jenislayanan');
+                        $user = $this->models->cariadmin(
+                            array(
+                                'idadmin'     => $p->idadmin,
+                            ),
+                            'admin'
+                        );
                         // die($data);
                         $no = $key + 1;
                         echo '<tr>';
                         echo '<td>' . $no . '</td>';
                         // echo '<td>' . $p->NIK . '</td>';
-                        echo '<td>' . $p->nama . '</td>';
+                        echo '<td>' . $user[0]->nama . '</td>';
                         // echo '<td>' . $p->alamat . '</td>';
                         // echo '<td>' . $p->nomorhp . '</td>';
                         // echo '<td>' . $p->email . '</td>';
@@ -86,7 +93,27 @@ $this->load->view('header');
                         } else {
                             echo '<td></td>';
                         }    
-                        echo '</tr>';
+                        if (!empty($p->berkas)) {
+                            if (!empty($p->balas)) { echo '<td>'.$p->balas.'</td>'; } else { ?>
+                                <td>
+                                    <form class="" action="<?php echo base_url('layanan/simpanverifikasi') ?>" method="post">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                            <!-- <div class="form-group"> -->
+                                                <!-- <label for="exampleFormControlSelect1">Balas Pengaduan</label> -->
+                                                <input class="form-control" type="text" name="balas" value="<?php echo $p->balas ?>" required><br>
+                                                <button class="btn btn-success" type="submit">Balas</button>
+                                                <!-- </div> -->
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input class="" type="hidden" name="idpengaduan" value="<?php echo $p->idpengaduan ?>" required><br>
+                                                <input class="" type="hidden" name="status" value="selesai" required><br>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </td>
+                        <?php } } else { echo '<td></td>'; } ?>
+                        <?php echo '</tr>';
                     }
                 endif; ?>
             </tbody>

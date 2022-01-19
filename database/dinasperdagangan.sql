@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jan 2022 pada 18.01
+-- Waktu pembuatan: 19 Jan 2022 pada 08.18
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.4.20
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `idadmin` int(11) NOT NULL,
+  `nama` text NOT NULL,
   `username` text NOT NULL,
   `password` text NOT NULL,
   `akses` enum('user','admin','','') NOT NULL
@@ -38,13 +39,14 @@ CREATE TABLE `admin` (
 -- Dumping data untuk tabel `admin`
 --
 
-INSERT INTO `admin` (`idadmin`, `username`, `password`, `akses`) VALUES
-(1, 'admin', 'admin', 'admin'),
-(4, 'user', 'user', 'user'),
-(5, 'tes', 'tes', 'user'),
-(6, 'tes', 'tes', 'user'),
-(7, 'lyla', 'lali', 'user'),
-(8, 'user123', 'user', 'user');
+INSERT INTO `admin` (`idadmin`, `nama`, `username`, `password`, `akses`) VALUES
+(1, 'Administrator', 'admin', 'admin', 'admin'),
+(4, 'Ella', 'user', 'user', 'user'),
+(5, 'Theresiyah', 'tes', 'tes', 'user'),
+(6, 'Robert', 'tes', 'tes', 'user'),
+(7, 'Layla', 'lyla', 'lali', 'user'),
+(8, 'Nugraha', 'user123', 'user', 'user'),
+(9, 'Rogerto', 'roger', 'user', 'user');
 
 -- --------------------------------------------------------
 
@@ -325,6 +327,7 @@ CREATE TABLE `pengaduan` (
   `hal` text NOT NULL,
   `status` enum('tulis','verifikasi','tindaklanjut','pending','selesai') NOT NULL,
   `berkas` text DEFAULT NULL,
+  `balas` text DEFAULT NULL,
   `idadmin` int(11) NOT NULL,
   `idjenis` int(11) NOT NULL,
   `created_date_time` date DEFAULT NULL,
@@ -335,13 +338,16 @@ CREATE TABLE `pengaduan` (
 -- Dumping data untuk tabel `pengaduan`
 --
 
-INSERT INTO `pengaduan` (`idpengaduan`, `NIK`, `nama`, `alamat`, `nomorhp`, `email`, `pekerjaan`, `hal`, `status`, `berkas`, `idadmin`, `idjenis`, `created_date_time`, `updated_date_time`) VALUES
-(12, '7326032404040001', 'Natalia', 'Jl Teuku Umar, Nunukan', 2147483647, 'Natalia@gmail.com', 'Rumah Tangga', 'Kelangkaan sembako', 'selesai', 'Contoh1.pdf', 4, 2, '2022-01-18', NULL),
-(14, '123', 'Theresyah', 'Cangkareng', 82, 'theresyah@gmail.com', 'Mahasiswa', 'Kelangkaan sembako', 'selesai', 'Abunawas_Menu_Book_Jakarta_2020.pdf', 4, 4, '2022-01-12', NULL),
-(15, '123', 'testing', 'bekasi', 21, 'sasa@example.com', 'pengangguran', '-', 'tulis', NULL, 0, 3, '2022-01-18', NULL),
-(16, '123', 'tester', 'Bekasi', 123, '123@gg.com', 'Cang', '123', 'selesai', 'Contoh.pdf', 4, 4, '2022-01-16', NULL),
-(17, '123', '123', '123', 123, '123@123.com', '123', '123', 'pending', NULL, 4, 6, '2022-01-15', NULL),
-(20, '1eqwfwq', '1dqw', 'qwf', 123, 'asfasf', 'asfasf', 'asf', '', NULL, 4, 2, '2022-01-18', NULL);
+INSERT INTO `pengaduan` (`idpengaduan`, `NIK`, `nama`, `alamat`, `nomorhp`, `email`, `pekerjaan`, `hal`, `status`, `berkas`, `balas`, `idadmin`, `idjenis`, `created_date_time`, `updated_date_time`) VALUES
+(12, '7326032404040001', 'Ella', 'Jl Teuku Umar, Nunukan', 2147483647, 'Natalia@gmail.com', 'Rumah Tangga', 'Kelangkaan sembako', 'selesai', 'Contoh1.pdf', 'dibalas', 4, 2, '2022-01-18', NULL),
+(14, '123', 'Ella', 'Cangkareng', 82, 'theresyah@gmail.com', 'Mahasiswa', 'Kelangkaan sembako', '', 'Abunawas_Menu_Book_Jakarta_2020.pdf', NULL, 4, 4, '2022-01-12', NULL),
+(15, '123', 'Layla', 'bekasi', 21, 'sasa@example.com', 'pengangguran', '-', 'tulis', NULL, NULL, 0, 3, '2022-01-18', NULL),
+(16, '123', 'Layla', 'Bekasi', 123, '123@gg.com', 'Cang', '123', 'selesai', 'Contoh.pdf', NULL, 7, 4, '2022-01-16', NULL),
+(17, '123', 'Layla', '123', 123, '123@123.com', '123', '123', 'pending', NULL, NULL, 7, 6, '2022-01-15', NULL),
+(20, '1eqwfwq', 'Ella', 'qwf', 123, 'asfasf', 'asfasf', 'asf', 'selesai', 'Contoh2.pdf', 'testtt', 4, 2, '2022-01-18', NULL),
+(21, NULL, 'Tabular', 'Depok', 21, 'tes@example.com', 'Wirausaha', '-', 'tulis', NULL, NULL, 6, 3, '2022-01-19', NULL),
+(22, NULL, 'Rogerto', 'asd', 123, 'aswd', 'asd', 'asd', 'pending', NULL, NULL, 9, 6, '2022-01-19', NULL),
+(23, NULL, 'Ella', 'asd', 0, 'asd', 'asd', 'asd', 'pending', NULL, NULL, 4, 4, '2022-01-19', NULL);
 
 -- --------------------------------------------------------
 
@@ -435,7 +441,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `idadmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idadmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `bahanpokok`
@@ -477,7 +483,7 @@ ALTER TABLE `keputusan`
 -- AUTO_INCREMENT untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  MODIFY `idpengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idpengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `report`

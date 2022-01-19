@@ -22,6 +22,7 @@
                             <th>Pekerjaan</th>
                             <th>Jenis Layanan</th>
                             <th>Hal yang diadukan</th>
+                            <th>Balasan Pengaduan</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
@@ -33,17 +34,25 @@
                         if (!empty($pengaduan)) :
                             foreach ($pengaduan as $key => $p) {
                                 $data = $this->models->getlayanan(array('id' => $p->idjenis), 'jenislayanan');
+                                $user = $this->models->cariadmin(
+                                    array(
+                                        'idadmin'     => $p->idadmin,
+                                    ),
+                                    'admin'
+                                );
+
                                 $no = $key + 1;
                                 echo '<tr>';
                                 echo '<td>' . $no . '</td>';
                                 // echo '<td>' . $p->NIK . '</td>';
-                                echo '<td>' . $p->nama . '</td>';
+                                echo '<td>' . $user[0]->nama . '</td>';
                                 echo '<td>' . $p->alamat . '</td>';
                                 echo '<td>' . $p->nomorhp . '</td>';
                                 echo '<td>' . $p->email . '</td>';
                                 echo '<td>' . $p->pekerjaan . '</td>';
                                 echo '<td>' . $data[0]->nama . '</td>';
                                 echo '<td>' . $p->hal . '</td>';
+                                if (!empty($p->balas)) { echo '<td>'.$p->balas.'</td>'; } else { echo '<td></td>'; }
                                 if($p->status == 'selesai') {
                                     echo '<td><div class="btn btn-success">Selesai</div></td>';
                                 } elseif ($p->status == 'tulis') {

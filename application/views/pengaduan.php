@@ -36,7 +36,7 @@ $this->load->view('header');
 
                 <div class="mb-3">
                     <label for="exampleInputNama" class="form-label">Nama</label>
-                    <input class="form-control" type="text" name="nama" value="<?php echo (!empty($pengaduan[0]->nama)) ? $pengaduan[0]->nama : '' ?>" required><br>
+                    <input class="form-control" type="text" name="nama" value="<?php echo $this->session->userdata('nama') ?>" required readonly><br>
                 </div><br>
 
                 <div class="mb-3">

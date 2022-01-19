@@ -94,6 +94,7 @@ class Layanan extends CI_Controller
     {
         $idpengaduan = $this->input->post('idpengaduan');
         $status = $this->input->post('status');
+        $balas = $this->input->post('balas');
 
         $config['upload_path']          = getcwd() . '/upload/';
         $config['allowed_types']        = 'pdf|doc|docx';
@@ -105,22 +106,32 @@ class Layanan extends CI_Controller
         if (!$this->upload->do_upload('berkas')) {
             $data_update = array(
                 'status' => $status,
+                'balas' => $balas,
 
             );
             $simpan = $this->models->update(array('idpengaduan' => $idpengaduan), $data_update, 'pengaduan');
             if ($simpan) {
-                redirect('layanan/daftarpengaduan');
+                if ($this->session->userdata('akses') == 'admin') {
+                    redirect('layanan/daftarpengaduan');
+                } else {
+                    redirect('layanan/statuspengaduan');
+                }
             }
         } else {
             $data = array('upload_data' => $this->upload->data());
             $filename = $data['upload_data']['file_name'];
             $data_update = array(
                 'status' => $status,
+                'balas' => $balas,
                 'berkas'      => $filename,
             );
             $simpan = $this->models->update(array('idpengaduan' => $idpengaduan), $data_update, 'pengaduan');
             if ($simpan) {
-                redirect('layanan/daftarpengaduan');
+                if ($this->session->userdata('akses') == 'admin') {
+                    redirect('layanan/daftarpengaduan');
+                } else {
+                    redirect('layanan/statuspengaduan');
+                }
             }
         }
     }
