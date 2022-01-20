@@ -16,10 +16,10 @@
                             <th>No</th>
                             <!-- <th>NIK</th> -->
                             <th>Nama</th>
-                            <th>Alamat</th>
+                            <!-- <th>Alamat</th> -->
                             <th>Nomor Telp/Hp</th>
                             <th>Email</th>
-                            <th>Pekerjaan</th>
+                            <!-- <th>Pekerjaan</th> -->
                             <th>Jenis Layanan</th>
                             <th>Hal yang diadukan</th>
                             <th>Balasan Pengaduan</th>
@@ -46,10 +46,10 @@
                                 echo '<td>' . $no . '</td>';
                                 // echo '<td>' . $p->NIK . '</td>';
                                 echo '<td>' . $user[0]->nama . '</td>';
-                                echo '<td>' . $p->alamat . '</td>';
+                                // echo '<td>' . $p->alamat . '</td>';
                                 echo '<td>' . $p->nomorhp . '</td>';
                                 echo '<td>' . $p->email . '</td>';
-                                echo '<td>' . $p->pekerjaan . '</td>';
+                                // echo '<td>' . $p->pekerjaan . '</td>';
                                 echo '<td>' . $data[0]->nama . '</td>';
                                 echo '<td>' . $p->hal . '</td>';
                                 if (!empty($p->balas)) { echo '<td>'.$p->balas.'</td>'; } else { echo '<td></td>'; }

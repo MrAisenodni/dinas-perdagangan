@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jan 2022 pada 08.18
+-- Waktu pembuatan: 19 Jan 2022 pada 17.16
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.4.20
 
@@ -257,6 +257,7 @@ INSERT INTO `galerivideo` (`idvideo`, `namakegiatan`, `tanggalkegiatan`, `video`
 CREATE TABLE `jenislayanan` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
+  `deskripsi` text DEFAULT NULL,
   `created_date_time` datetime NOT NULL,
   `updated_date_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -265,14 +266,14 @@ CREATE TABLE `jenislayanan` (
 -- Dumping data untuk tabel `jenislayanan`
 --
 
-INSERT INTO `jenislayanan` (`id`, `nama`, `created_date_time`, `updated_date_time`) VALUES
-(1, 'PENERBITAN SKA', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
-(2, 'PENERBITAN TDG/SKPB', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
-(3, 'PENERBITAN WARALABA/STPW', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
-(4, 'REKOMENDASI IZIN SIUP MINUMAN BERALKOHOL', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
-(5, 'REKOMENDASI PKAPT', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
-(6, 'REKOMENDASI IZIN PENGELOLAAN PASAR', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
-(7, 'PELAYANAN TERA ATAU TERA ULANG', '2022-01-18 09:59:55', '2022-01-18 09:59:55');
+INSERT INTO `jenislayanan` (`id`, `nama`, `deskripsi`, `created_date_time`, `updated_date_time`) VALUES
+(1, 'PENERBITAN SKA', 'Melampirkan Invoice yang diterbitkan perusahaan eksportir. Melampirkan SuratPemberitahuan Ekspor Barang ( PEB ) yang diterbitkan oleh Kantor Bea dan Cukai.', '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
+(2, 'PENERBITAN TDG/SKPB', NULL, '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
+(3, 'PENERBITAN WARALABA/STPW', NULL, '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
+(4, 'REKOMENDASI IZIN SIUP MINUMAN BERALKOHOL', NULL, '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
+(5, 'REKOMENDASI PKAPT', NULL, '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
+(6, 'REKOMENDASI IZIN PENGELOLAAN PASAR', NULL, '2022-01-18 09:59:55', '2022-01-18 09:59:55'),
+(7, 'PELAYANAN TERA ATAU TERA ULANG', 'Cek ke akuratan Timbangan Pasar\nPom bensin\nJembatan timbang untuk Mobil bawa kelapa sawit', '2022-01-18 09:59:55', '2022-01-18 09:59:55');
 
 -- --------------------------------------------------------
 
@@ -340,10 +341,10 @@ CREATE TABLE `pengaduan` (
 
 INSERT INTO `pengaduan` (`idpengaduan`, `NIK`, `nama`, `alamat`, `nomorhp`, `email`, `pekerjaan`, `hal`, `status`, `berkas`, `balas`, `idadmin`, `idjenis`, `created_date_time`, `updated_date_time`) VALUES
 (12, '7326032404040001', 'Ella', 'Jl Teuku Umar, Nunukan', 2147483647, 'Natalia@gmail.com', 'Rumah Tangga', 'Kelangkaan sembako', 'selesai', 'Contoh1.pdf', 'dibalas', 4, 2, '2022-01-18', NULL),
-(14, '123', 'Ella', 'Cangkareng', 82, 'theresyah@gmail.com', 'Mahasiswa', 'Kelangkaan sembako', '', 'Abunawas_Menu_Book_Jakarta_2020.pdf', NULL, 4, 4, '2022-01-12', NULL),
-(15, '123', 'Layla', 'bekasi', 21, 'sasa@example.com', 'pengangguran', '-', 'tulis', NULL, NULL, 0, 3, '2022-01-18', NULL),
+(14, '123', 'Ella', 'Cangkareng', 82, 'theresyah@gmail.com', 'Mahasiswa', 'Kelangkaan sembako', 'selesai', 'Abunawas_Menu_Book_Jakarta_2020.pdf', 'testing', 4, 4, '2022-01-12', NULL),
+(15, '123', 'Layla', 'bekasi', 21, 'sasa@example.com', 'pengangguran', '-', 'tulis', NULL, NULL, 8, 3, '2022-01-18', NULL),
 (16, '123', 'Layla', 'Bekasi', 123, '123@gg.com', 'Cang', '123', 'selesai', 'Contoh.pdf', NULL, 7, 4, '2022-01-16', NULL),
-(17, '123', 'Layla', '123', 123, '123@123.com', '123', '123', 'pending', NULL, NULL, 7, 6, '2022-01-15', NULL),
+(17, '123', 'Layla', '123', 123, '123@123.com', '123', '123', 'tindaklanjut', NULL, NULL, 7, 6, '2022-01-15', NULL),
 (20, '1eqwfwq', 'Ella', 'qwf', 123, 'asfasf', 'asfasf', 'asf', 'selesai', 'Contoh2.pdf', 'testtt', 4, 2, '2022-01-18', NULL),
 (21, NULL, 'Tabular', 'Depok', 21, 'tes@example.com', 'Wirausaha', '-', 'tulis', NULL, NULL, 6, 3, '2022-01-19', NULL),
 (22, NULL, 'Rogerto', 'asd', 123, 'aswd', 'asd', 'asd', 'pending', NULL, NULL, 9, 6, '2022-01-19', NULL),

@@ -1,4 +1,5 @@
-(function ($) {
+
+  (function ($) {
   "use strict";
 
   var review = $('.client_review_slider');
@@ -133,6 +134,12 @@
 		});	
 	}
 
+  $('#jenislayanan').change(function() {
+     var id = $('option:selected').attr('data-id'); 
+     var pesan = $('option:selected').attr('data-param');  
+     console.log(id); 
+     $('#textlayanan').text(pesan); 
+  })
 
  //------- Mailchimp js --------//  
 function mailChimp() {

@@ -16,13 +16,16 @@ $this->load->view('header');
             </div>
         </div>
     </div>
-</section>
+</section><br>
 <!-- breadcrumb start-->
 
 <div class="container">
-    <div class="row justify-content-md-center ">
-        <img src="<?php echo base_url('upload/infografis-01.png') ?>" alt="Infografis" width="50%">
-        <div class="col-lg-6 col-sm-6"><br><br>
+    <div class="row m-n5">
+        <div class="col-lg-6 col-sm-6">
+            <img src="<?php echo base_url('upload/infografis-01.png') ?>" alt="Infografis" height="75%">
+            <img src="<?php echo base_url('upload/layanan-02.png') ?>" alt="Infografis" height="25%" width="90%">
+        </div>
+        <div class="col-lg-6 col-sm-7 ml-6"><br><br>
             <h1>Pengaduan Layanan</h1>
             <span>Silahkan melakukan pengaduan, Jika sudah Cek status pengaduan Klik &nbsp
                 <a class="btn btn-info" href="<?php echo base_url('layanan/statuspengaduan') ?>">Di sini</a>
@@ -61,13 +64,19 @@ $this->load->view('header');
 
                 <div class="mb-3">
                     <label>Jenis Layanan</label>
-                    <select name="jenislayanan" id="jenislayanan" class="form-control" required>
+                    <select name="jenislayanan" id="jenislayanan" class="form-control" required onchange="getChange(this)">
                         <option value="" hidden>--- PILIH JENIS LAYANAN ---</option>
                         <?php foreach ($jenislayanan as $key => $p) { ?>
-                            <option value="<?php echo $p->id ?>"><?php echo $p->nama ?></option>
+                            <option id="jlayanan" value="<?php echo $p->id ?>" data-id="<?php echo $p->id ?>" data-param="<?php echo $p->deskripsi ?>"><?php echo $p->nama ?></option>
                         <?php } ?>
                     </select>
-                </div><br>
+                </div>
+                <br>
+                
+                <div class="mb-3">
+                    <label>Deskripsi Layanan</label>
+                    <textarea id="textlayanan" class="form-control" type="text" name="hal" value="" disabled rows="5"></textarea><br>
+                </div>
                 
                 <div class="mb-3">
                     <label>Hal yang diadukan</label>
@@ -83,6 +92,20 @@ $this->load->view('header');
         </div>
     </div>
 </div><br><br><br><br>
+<script>
+    function getChange(selectObject) {
+        var pesan = document.getElementById('jenislayanan').options[document.getElementById('jenislayanan').selectedIndex].getAttribute('data-param'); 
+
+        console.log(pesan)
+        document.getElementById('textlayanan').value = pesan; 
+    }
+    // $('#jenislayanan').change(function() {
+    //  var id = $('option:selected').attr('data-id'); 
+    //  var pesan = $('option:selected').attr('data-param');  
+    //  console.log(id); 
+    //  $('#textlayanan').text(pesan); 
+//   })
+</script>
 
 <?php
 $this->load->view('footer');
