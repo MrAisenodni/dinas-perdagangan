@@ -17,10 +17,18 @@ class Layanan extends CI_Controller
 
     public function daftarpengaduan()
     {
-        $data['pengaduan'] = $this->models->pengaduan(array(), 'pengaduan');
+        $status = (!empty($this->input->get('status'))) ? $this->input->get('status') : null;
+        $keyword = (!empty($this->input->get('keyword'))) ? $this->input->get('keyword') : null;
+
+        if (!$status && !$keyword) {
+            $data['pengaduan'] = $this->models->pengaduan(array(), 'pengaduan');
+        } else {
+            $data['pengaduan'] = $this->models->getPengaduanByKeyword($status, $keyword);
+        }
 
         $this->load->view('admin/daftarpengaduan', $data);
     }
+
     public function simpanpengaduan()
     {
         date_default_timezone_set("Asia/Jakarta");

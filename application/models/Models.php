@@ -110,6 +110,15 @@ class Models extends CI_model
         $this->db->where($where);
         return $this->db->get()->result();
     }
+    // Model Filter Pengaduan
+    public function getPengaduanByKeyword($status, $keyword)
+    {
+        $this->db->from('pengaduan');
+        
+        (!$status) ? $this->db->where('nama LIKE "%'.$keyword.'%" OR nomorhp LIKE "%'.$keyword.'%" OR hal LIKE "%'.$keyword.'%" OR balas LIKE "%'.$keyword.'%"') : $this->db->where('status = "'.$status.'" AND (nama LIKE "%'.$keyword.'%" OR nomorhp LIKE "%'.$keyword.'%" OR hal LIKE "%'.$keyword.'%" OR balas LIKE "%'.$keyword.'%")');
+        return $this->db->get()->result();
+    }
+
     public function getsopbyid($where = array())
     {
         $this->db->from('Keputusan');

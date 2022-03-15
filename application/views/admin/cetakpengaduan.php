@@ -92,9 +92,7 @@
                                 } else {
                                     echo '<td><div class="btn btn-danger">Beri Tanggapan</div></td>';
                                 }
-                                echo '<td><a href="' . base_url('laporan/cetak/' . $p->idpengaduan) . '"class="btn btn-danger btn-xs">Cetak</a> 
-             
-                    </td>';
+                                echo '<td><a href="' . base_url('laporan/cetak/' . $p->idpengaduan) . '"class="btn btn-danger btn-xs">Cetak</a></td>';
                                 echo '</tr>';
                             }
                         endif; ?>
